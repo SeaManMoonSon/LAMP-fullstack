@@ -1,12 +1,13 @@
-# LAMP-CMS
+# LAMP-app
 
-LAMP-CMS - ett exempelprojekt baserad på Linux, Apache, MySQL (MariaDB), och PHP.
+Gitrepot är ett startprojekt baserad på en LAMP-stack - Linux, Apache, MySQL (MariaDB), PHP. Projektet kan användas i en inledande fas för att koda ett projekt som (https://github.com/Glimakra-Webbutvecklare-2021/case-fullstack-php).
 
-Lokal Docker applikation testad med Linode (https://www.linode.com/) - Appen `phpMyAdmin`. Appen är en LAMP stack (PHP version 7.4).
+
+Guiden beskriver en tänkbar mappstruktur för utveckling i Docker (lokal miljö),  produktionssatt med Linode (publik miljö). I Linode används appen `phpMyAdmin`. En LAMP stack (PHP version 7.4) med tillgång till phpMyAdmin.
 
 ---
 
-Ett förslag på hur katalogstrukturen i ett CMS. Namngivning av filer, mappar, och struktur liknar Wordpress:
+Förslag på hur katalogstrukturen i ett CMS (namngivning av filer, mappar, och struktur liknar Wordpress):
 
 Jfr
 
@@ -28,7 +29,7 @@ Mappen `public` motsvarar en webservers sökväg till:
 
 Strukturen innebär att innehållet i mappen `public` enkelt kan överföras med en FTP klient till en publik webbserver. 
 
-Används ramverk i PHP (ex composer eller Laravel), behöver applikationen även ha tillgång till `/user/share`.
+*Används ramverk i PHP (ex composer eller Laravel), behöver applikationen även ha tillgång till `/user/share`.*
 
 ---
 
@@ -38,7 +39,7 @@ project
 ├── app
 │   ├── public
 │   │   ├── cms-content
-│   │   │   ├── css
+│   │   │   ├── styles
 │   │   │   │   └── style.css
 │   │   │   └── images
 │   │   │   └── uploads
@@ -60,7 +61,7 @@ project
 
 ```
 
-I mappstrukturen ovan används `.htaccess` i mappen `cms-includes`.  
+I mappstrukturen ovan används `.htaccess` i mappen `cms-includes`. Inställningarna i den filen innebär att filer endast kan inkluderas av applikationen, och inte genom att någon anger sökvägen i en url. 
 
 ```htaccess
 # Refuse direct access to all files
@@ -73,6 +74,63 @@ Deny from all
 <p>&nbsp;</p>
 
 ## Docker - development
+
+I `docker-compose.yml` finns följande instruktioner:
+
+```yml
+version: '3'
+services:
+    apache:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ./app/public:/var/www/html
+            - ./configs/custom-apache2.conf:/etc/apache2/apache2.conf
+            - ./configs/custom-php.ini:/usr/local/etc/php/php.ini
+        ports:
+            - "8088:80"
+    mysql:
+        image: mariadb:latest
+        environment:
+            MYSQL_ROOT_PASSWORD: 'db_root_password'
+            MYSQL_USER: 'db_user'
+            MYSQL_PASSWORD: 'db_password'
+            MYSQL_DATABASE: 'db_lamp_app'
+        volumes:
+            - mysqldata:/var/lib/mysql
+        ports:
+            - 33061:3306
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        ports:
+            - 8089:80
+        environment:
+            - PMA_ARBITRARY=1
+        depends_on:
+            - mysql
+volumes:
+    mysqldata: {}      
+```
+
+I `Dockerfile` anges vidare instruktioner för apache (och php). PHP versionen motsvarar den version som finns i Linodes app `phpmyadmin`.
+
+```Dockerfile
+# PHP version 7|8
+FROM php:7.4-apache
+# FROM php:8.0-apache
+RUN a2enmod rewrite
+RUN service apache2 restart
+RUN docker-php-ext-install pdo pdo_mysql 
+```
+
+---
+
+**För att testa repot** nedan kan du klona ner det och göra enligt guiden nedan. **För att använda repot som ett startprojektet** skapa ett eget versionshanterat projekt, och därefter manuellt skapa mappstruktur och filer enligt det här projektet. Då kan du själv överväga justeringar av kod, filnamn, strukur...
+
+---
+
 
 Öppna en terminal och kör kommandot:
 
@@ -306,16 +364,32 @@ Nu har du en lokal Docker miljö för utveckling. Produktionsmiljön uppdaterar 
 
 ---
 
-## Sample
-Modell, MySQL SELCT, INSERT, UPDATE, DELETE
+## Template model
+Skapa en klass för en ny resurs.
+SELCET, INSERT, UPDATE, DELETE
 
+## Backup
+
+Följande kommando i terminalen visar containers: `docker ps`.
+
+En MyQSL databas kan kopieras med kommandot `mysqldump`. Kommandot för att göra en backup i en Docker container med namnet `lamp-app-mysql-1`, och med aktuella inställningar i `docker-compose.yml`:
+
+`docker exec lamp-app-mysql-1 /usr/bin/mysqldump -u root --password=db_root_password db_lamp_app > backup.sql`
+
+För att återläsa data från en fil med namnet `backup.sql` till samma datatbas:
+
+`cat backup.sql | docker exec -i lamp-app-mysql-1 /usr/bin/mysql -u root --password=db_root_password db_lamp_app`
 
 --- 
 ## Tips - visa fel i PHP
+
+Om php servern ger felkod i form av ett server 500 error kan felen visas genom inledande direktiv i en php-fil (den här typen av inställningar gör du endast i lokal utvecklingsmiljö).
+
+```php
 // display error
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+```
 
-// ini_set('display_errors', 1);
-
-// ini_set('display_startup_errors', 1);
-
-// error_reporting(E_ALL);
+I en driftsatt applikation på en publik webbserver loggar man vanligtvis fel, och visar "användarvänliga meddelande" för besökare.  
