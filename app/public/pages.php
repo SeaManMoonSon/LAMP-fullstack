@@ -42,8 +42,8 @@ $Parsedown = new Parsedown();
 
                 while ($row = $result->fetch()) {
                     $id = $row['id'];
-                    $title = $row['title'];
-                    $content = $row['content'];
+                    $title = trim($row['title']);
+                    $content = trim($row['content']);
                     $created_at = $row['created_at'];
                     $created_by = $row['user_id'];
 
@@ -52,7 +52,7 @@ $Parsedown = new Parsedown();
                         "<p class='createdBy'>" . "Created by: " . $created_by . "</p>" .
                         "<p class='createdAt'>" . "At: " . $created_at . "</p>" .
                         "<p class='pageID'>" . "Page ID: " . $id . "</p>" .
-                        "<a href='$title'>Visit page</a>" .
+                        "<a href='page.php?id=$id'>Visit page</a>" .
                         "<a href='edit.php?id=$id'>Edit page</a>" .
                         "<a href='delete.php?id=$id'>Delete page</a>" .
                         "</li>";
