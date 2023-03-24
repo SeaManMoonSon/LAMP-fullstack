@@ -1,0 +1,74 @@
+body {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+    #dashboard {
+        background-color: lightgray;
+        height: 100%;
+        width: 1400px;
+    
+        display: grid; 
+        grid-template-columns: 1fr 6fr;
+    
+        #sideMenu {
+            display: grid;
+            grid-template-rows: 1fr 9fr;
+    
+            .logo {
+                border: 2px solid blue;
+                border-radius: 100rem;
+                width: 100px;
+                height: 100px;
+            }
+    
+            .menu {
+                display: grid;
+                align-items: center;
+    
+                .navbar {
+                    display: grid;
+                    align-items: center;
+                    justify-content: center;
+                    border: 2px solid red;
+                    border-radius: 0 30px 30px 0;
+                    height: 40%;
+                    margin-right: 20px;
+                }
+            }
+        }
+    
+        #innerWrapper {
+            display: grid;
+            width: 100%;
+    
+            #topDiv {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                margin: 20px;
+        
+                .adminPanel {
+                    border: 2px solid yellow;
+                    border-radius: 40px;
+                }
+    
+                .statPanel {
+                    border: 2px solid green;
+                    margin-left: 20px;
+                    border-radius: 40px;
+                }
+            }
+    
+            #botDiv {
+                display: grid;
+    
+                .activity {
+                    border: 2px solid purple;
+                    margin: 20px;
+                    border-radius: 40px;
+                }
+            }
+        } 
+    }
+}
+

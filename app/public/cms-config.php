@@ -6,7 +6,7 @@
 $db_host = "localhost"; // usually: localhost
 $db_name = "db_lamp_app";
 $db_user = "db_user_linode";
-$db_password = "RxDhBntsV6cXUYfh";
+$db_password = "mysql_admin_password";
 
 // development, localhost (docker-compose.yml)
 if (strpos($_SERVER['SERVER_NAME'], "localhost") !== false) {

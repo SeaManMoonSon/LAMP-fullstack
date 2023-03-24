@@ -1,0 +1,16 @@
+#leftNav {
+    height: 100%;
+    .navMenu {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        list-style: none;
+        
+        a, 
+        a:visited {
+            text-decoration: none;
+            color: black;
+        }
+    }
+}

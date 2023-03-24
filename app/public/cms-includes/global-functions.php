@@ -36,6 +36,15 @@ function odd(int $x)
     return $x % 2 !== 0;
 }
 
+function check_logged_in()
+{
+    session_start();
+    if (!isset($_SESSION['user_id'])) {
+        header("location: login.php");
+        exit();
+    }
+}
+
 
 
 ?>
