@@ -42,6 +42,9 @@
 <body>
     <main>
     <?php 
+    
+    $user_schema = $user_setup->setup();
+
     // Write out message from other pages if exists
     if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
         echo "<article><aside><p>". $_SESSION['message'] . "</p></aside></article>";

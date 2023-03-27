@@ -4,7 +4,7 @@ require_once "./cms-includes/models/Database.php";
 require_once "./cms-includes/models/User.php";
 require_once "./cms-includes/models/Page.php";
 
-$user_setup = new User();
+// $user_setup = new User();
 $page_setup = new Page();
 
 // Handle form submission
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <?php
         // User model setup method; create users table and pages table in database if non-existent
-        $user_schema = $user_setup->setup();
+        // $user_schema = $user_setup->setup();
         $page_schema = $page_setup->setup();
 
         // Write out message from other pages if exists

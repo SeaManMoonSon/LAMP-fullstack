@@ -27,7 +27,9 @@ $title = "Dashboard";
         <?php include ROOT . '/cms-includes/partials/sidebar.php' ?>
         <div id="innerWrapper">
             <div id="topDiv">
-                <div class="adminPanel">Admin</div>
+                <div class="adminPanel">
+                    <?php include ROOT . '/cms-includes/partials/admin.php' ?>
+                </div>
                 <div class="statPanel">Stat</div>
             </div>
             <div id="botDiv">

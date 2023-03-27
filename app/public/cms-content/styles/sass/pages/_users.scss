@@ -1,5 +1,16 @@
 .users {
-    border: 2px solid green;
-    margin: 50px;
-    border-radius: 40px;
+  box-shadow: inset 0 3px 8px #000;
+  margin: 50px;
+  border-radius: 40px;
+
+  display: flex;
+  height: fit-content;
+
+  .userList {
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
 }

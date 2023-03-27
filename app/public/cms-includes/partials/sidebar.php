@@ -1,5 +1,5 @@
 <div id="sideMenu">
-    <div class="logo">Logo</div>
+    <div class="logo">CITRUS</div>
         <div class="menu">
             <div class="navbar">
                 <div id="leftNav">

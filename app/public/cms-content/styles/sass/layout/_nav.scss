@@ -1,16 +1,19 @@
 #leftNav {
     height: 100%;
+    font-family: monospace;
+
     .navMenu {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         height: 100%;
         list-style: none;
+        color: white;
         
         a, 
         a:visited {
             text-decoration: none;
-            color: black;
+            color: white;
         }
     }
 }

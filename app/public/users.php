@@ -28,26 +28,13 @@ $title = "Users";
         <div id="innerWrapper">
             <div class="users">
                 <?php 
-                    $pdo = new PDO("mysql:host=". DB_HOST .";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
-                    $query = "SELECT * FROM users";
-                    $result = $pdo->query($query);
+                $pdo = new PDO("mysql:host=". DB_HOST .";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
+                $query = "SELECT * FROM users";
+                $result = $pdo->query($query);
 
-                    echo "<ul class='userList'>";
-
-                    while($row = $result->fetch()) {
-                        $id = $row['id'];
-                        $username = $row['username'];
-                        $created_at = $row['created_at'];
-                        $latest_login = $row['latest_login'];
-
-                        echo "<li class='user'>
-                                <p class='userID'>" . "User ID: " . $id . "</p>" .
-                                "<p class='userName'>" . "Username: " . $username . "</p>" .
-                                "<p class='created'>" . "Created: " . $created_at . "</p>" .
-                                "<p class='latestLogin'>" . "Latest login: " . $latest_login . "</p>" .
-                            "</li>";
-                    }
-                    echo "</ul>";
+                echo "<ul class='userList'>";
+                        include ROOT . '/cms-includes/partials/user-list.php';
+                echo "</ul>";
                 ?>
             </div>
         </div>
