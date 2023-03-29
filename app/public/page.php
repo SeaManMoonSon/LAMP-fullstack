@@ -25,10 +25,14 @@
 </head>
 <body>
     <?php 
+        require_once "./cms-includes/partials/header.php";
+
         $Parsedown = new Parsedown();
         $html = $Parsedown->text($page['title'] . $page['content']);
 
         echo $html;
+
+        require_once "./cms-includes/partials/footer.php";
     ?>
 </body>
 </html>

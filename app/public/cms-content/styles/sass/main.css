@@ -1,14 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-#leftNav {
+.navbar {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  background-color: #264653;
+  box-shadow: inset 0 3px 8px #000;
+  border-radius: 0 30px 30px 0;
+  height: 40%;
+  margin-right: 20px;
+  color: white;
+}
+.navbar #leftNav {
   height: 100%;
   font-family: monospace;
 }
-#leftNav .navMenu {
+.navbar #leftNav .navMenu {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -16,8 +28,10 @@
   list-style: none;
   color: white;
 }
-#leftNav .navMenu a,
-#leftNav .navMenu a:visited {
+.navbar #leftNav .navMenu a,
+.navbar #leftNav .navMenu a:visited {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
   text-decoration: none;
   color: white;
 }
@@ -27,28 +41,83 @@
   background-color: #222823;
   border-radius: 40px;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #e9c46a;
+}
+.adminPanel .adminDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 50px;
+}
+.adminPanel .adminDiv .formDiv {
+  background-color: #e9c46a;
+  color: #222823;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 40px;
+}
+.adminPanel .adminDiv .formDiv #settingsForm {
+  margin: 40px;
+}
+.adminPanel .adminDiv img {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 100rem;
+}
+.adminPanel .adminDiv .adminButtons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.adminPanel .adminDiv .adminButtons a,
+.adminPanel .adminDiv .adminButtons a:visited {
+  margin: 10px;
+  color: white;
+  text-decoration: none;
+}
+.adminPanel .adminDiv .adminButtons a:hover,
+.adminPanel .adminDiv .adminButtons button:hover {
+  text-decoration: underline;
+}
+.adminPanel .adminDiv .adminButtons button {
+  color: white;
+  background: none;
+  border: none;
+  font: inherit;
+}
+.adminPanel .adminDiv .adminButtons button:active {
+  color: #e9c46a;
 }
 
 body {
   display: grid;
   justify-content: center;
   align-items: center;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  padding: 50px;
 }
 body #dashboard {
   background-color: #272727;
   border-radius: 40px;
-  margin-top: 40px;
   height: 100%;
   width: 1400px;
   display: grid;
   grid-template-columns: 1fr 6fr;
+  overflow: hidden;
 }
 body #dashboard #sideMenu {
   display: grid;
   grid-template-rows: 1fr 7fr;
 }
 body #dashboard #sideMenu .logo {
-  background-color: #F4D35E;
+  background-color: #E9C46A;
   border-radius: 2rem 0;
   width: 70px;
   height: 70px;
@@ -58,17 +127,6 @@ body #dashboard #sideMenu .logo {
 body #dashboard #sideMenu .menu {
   display: grid;
   align-items: center;
-}
-body #dashboard #sideMenu .menu .navbar {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  background-color: #222823;
-  box-shadow: inset 0 3px 8px #000;
-  border-radius: 0 30px 30px 0;
-  height: 40%;
-  margin-right: 20px;
-  color: white;
 }
 body #dashboard #innerWrapper {
   display: grid;
@@ -92,15 +150,24 @@ body #dashboard #innerWrapper #botDiv .activity {
   box-shadow: inset 0 3px 8px #000;
   background-color: #222823;
   border-radius: 40px;
-  margin: 20px;
+  margin: 0 40px 40px 40px;
 }
 
 .users {
-  box-shadow: inset 0 3px 8px #000;
   margin: 50px;
   border-radius: 40px;
   display: flex;
-  height: fit-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.users .header {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .users .userList {
   width: 100%;
@@ -110,12 +177,66 @@ body #dashboard #innerWrapper #botDiv .activity {
 }
 
 .pages {
-  border: 2px solid deeppink;
   margin: 50px;
   border-radius: 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
 }
-.pages #createForm {
-  display: none;
+.pages .header {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pages .header a,
+.pages .header a:visited {
+  font-size: 19px;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border: 2px solid #E9C46A;
+  border-radius: 100rem;
+}
+.pages .header a:hover {
+  background-color: #E9C46A;
+  color: #272727;
+}
+.pages .pageList {
+  max-height: 80%;
+  overflow-y: auto;
+}
+.pages .pageList .page {
+  box-shadow: inset 0 3px 8px #000;
+  background-color: #222823;
+  border-radius: 40px;
+  padding: 10px 20px 10px 20px;
+  margin: 5px 0 10px 0;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr 1fr;
+  align-items: center;
+}
+.pages .pageList .page .btnDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.pages .pageList .page .btnDiv .material-symbols-rounded {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+.pages .pageList .page .btnDiv a,
+.pages .pageList .page .btnDiv a:visited {
+  color: white;
+}
+.pages .pageList .page .btnDiv .visit:hover {
+  color: #2A9D8F;
+}
+.pages .pageList .page .btnDiv .edit:hover {
+  color: #E9C46A;
+}
+.pages .pageList .page .btnDiv .delete:hover {
+  color: #E76F51;
 }
 
 .user {
@@ -141,7 +262,7 @@ body #dashboard #innerWrapper #botDiv .activity {
   flex-direction: column;
 }
 .user .userInfo p {
-  font-family: monospace;
+  font-family: "Montserrat", sans-serif;
   color: white;
   padding: 5px;
 }

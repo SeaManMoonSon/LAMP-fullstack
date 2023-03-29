@@ -27,6 +27,9 @@ $title = "Users";
         <?php include ROOT . '/cms-includes/partials/sidebar.php' ?>
         <div id="innerWrapper">
             <div class="users">
+            <div class="header">
+                <h2><?= $title ?></h2>
+            </div>
                 <?php 
                 $pdo = new PDO("mysql:host=". DB_HOST .";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
                 $query = "SELECT * FROM users";

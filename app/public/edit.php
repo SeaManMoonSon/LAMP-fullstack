@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once "./cms-includes/models/Database.php";
+    // require_once "./cms-includes/models/Activity.php";
 
     $id = $_GET['id'];
 
@@ -8,6 +9,7 @@
         $form_title = $_POST["title"];
         $form_content = $_POST["content"];
         $form_id = $_POST["id"];
+        // $user_action = "UPDATED";
 
         if (!empty($form_title)) {
             $pdo = new PDO("mysql:host=". DB_HOST .";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
@@ -20,6 +22,10 @@
             $stmt->execute();
     
             $_SESSION['message'] = "Page edited successfully";
+
+            // $action_query = "INSERT INTO user_activity (user, user_action, action_time) VALUES (NULL, '$user_action', NULL)";
+            // $stmt = $pdo->query($action_query);
+
             header("location: pages.php");
         } 
     }

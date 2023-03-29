@@ -1,77 +1,66 @@
 body {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  height: 100vh;
+  padding: 50px;
+
+  #dashboard {
+    background-color: #272727;
+    border-radius: 40px;
+    height: 100%;
+    width: 1400px;
     display: grid;
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: 1fr 6fr;
+    overflow: hidden;
 
-    #dashboard {
-        background-color: #272727;
-        border-radius: 40px;
-        margin-top: 40px;
-        height: 100%;
-        width: 1400px;
-    
-        display: grid; 
-        grid-template-columns: 1fr 6fr;
-    
-        #sideMenu {
-            display: grid;
-            grid-template-rows: 1fr 7fr;
-    
-            .logo {
-                background-color: #F4D35E;
-                border-radius: 2rem 0;
-                width: 70px;
-                height: 70px;
-                margin: 30px 0 0 30px;
-                color: white;
-            }
-    
-            .menu {
-                display: grid;
-                align-items: center;
-    
-                .navbar {
-                    display: grid;
-                    align-items: center;
-                    justify-content: center;
-                    background-color: #222823;
-                    box-shadow: inset 0 3px 8px #000;
-                    border-radius: 0 30px 30px 0;
-                    height: 40%;
-                    margin-right: 20px;
-                    color: white;
-                }
-            }
-        }
-    
-        #innerWrapper {
-            display: grid;
-            width: 100%;
-    
-            #topDiv {
-                display: grid;
-                grid-template-columns: 1fr 2fr;
-                margin: 20px;
-        
-                .statPanel {
-                    box-shadow: inset 0 3px 8px #000;
-                    background-color: #222823;
-                    border-radius: 40px;
-                    margin: 20px;
-                }
-            }
-    
-            #botDiv {
-                display: grid;
-    
-                .activity {
-                    box-shadow: inset 0 3px 8px #000;
-                    background-color: #222823;
-                    border-radius: 40px;
-                    margin: 20px;
-                }
-            }
-        } 
+    #sideMenu {
+      display: grid;
+      grid-template-rows: 1fr 7fr;
+
+      .logo {
+        background-color: #E9C46A;
+        border-radius: 2rem 0;
+        width: 70px;
+        height: 70px;
+        margin: 30px 0 0 30px;
+        color: white;
+      }
+
+      .menu {
+        display: grid;
+        align-items: center;
+      }
     }
-}
 
+    #innerWrapper {
+      display: grid;
+      width: 100%;
+
+      #topDiv {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        margin: 20px;
+
+        .statPanel {
+          box-shadow: inset 0 3px 8px #000;
+          background-color: #222823;
+          border-radius: 40px;
+          margin: 20px;
+        }
+      }
+
+      #botDiv {
+        display: grid;
+
+        .activity {
+          box-shadow: inset 0 3px 8px #000;
+          background-color: #222823;
+          border-radius: 40px;
+          margin: 0 40px 40px 40px;
+        }
+      }
+    }
+  }
+}

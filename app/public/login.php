@@ -12,13 +12,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $form_username = $_POST['username'];
     $form_password = $_POST['password'];
 
-    $pdo = new PDO("mysql:host=". DB_HOST .";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
+    $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
 
-    $statement = $pdo->prepare("SELECT * FROM users WHERE username = :username");
-    $statement->bindParam(':username', $form_username);
-    $statement->execute();
-    
-    $user = $statement->fetch();
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+    $stmt->bindParam(':username', $form_username);
+    $stmt->execute();
+
+    $user = $stmt->fetch();
 
     if (!$user) {
         $_SESSION['message'] = "Username does not exists";
@@ -63,8 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <main>
 
         <?php
-        // User model setup method; create users table and pages table in database if non-existent
-        // $user_schema = $user_setup->setup();
         $page_schema = $page_setup->setup();
 
         // Write out message from other pages if exists
@@ -76,9 +74,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1>Login</h1>
         <form action="" method="POST">
             <label for="username">Username: </label>
-            <input type="text" name="username" id="username">
+            <input type="text" name="username" id="username" required>
             <label for="password">Password: </label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" required>
             <input type="submit" value="Login">
         </form>
         <p>Or <a href="register.php">create an account</a></p>

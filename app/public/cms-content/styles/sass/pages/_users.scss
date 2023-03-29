@@ -1,14 +1,22 @@
 .users {
-  box-shadow: inset 0 3px 8px #000;
   margin: 50px;
   border-radius: 40px;
-
   display: flex;
-  height: fit-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  .header {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   .userList {
     width: 100%;
-
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;

@@ -1,12 +1,9 @@
-function openCreateForm() {
-    let createForm = document.getElementById("createForm");
-    let addBtn = document.getElementById("addPage");
+function toggleSettings() {
+    let settingsForm = document.getElementById("settingsForm");
 
-    if (createForm.style.display === "none") {
-        createForm.style.display = "block";
-        addBtn.textContent = "Close creation form";
+    if (settingsForm.style.display === "none") {
+        settingsForm.style.display = "block";
     } else {
-        createForm.style.display = "none";
-        addBtn.textContent = "Add new page";
+        settingsForm.style.display = "none";
     }
 }

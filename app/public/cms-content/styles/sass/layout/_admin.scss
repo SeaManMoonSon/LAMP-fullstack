@@ -1,6 +1,67 @@
 .adminPanel {
-    box-shadow: inset 0 3px 8px #000;
-    background-color: #222823;
-    border-radius: 40px;
-    margin: 20px;
+  box-shadow: inset 0 3px 8px #000;
+  background-color: #222823;
+  border-radius: 40px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #e9c46a;
+
+  .adminDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 50px;
+
+    .formDiv {
+      background-color: #e9c46a;
+      color: #222823;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      border-radius: 40px;
+
+      #settingsForm {
+        margin: 40px;
+      }
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      border-radius: 100rem;
+    }
+
+    .adminButtons {
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+
+      a,
+      a:visited {
+        margin: 10px;
+        color: white;
+        text-decoration: none;
+      }
+
+      a:hover,
+      button:hover {
+        text-decoration: underline;
+      }
+
+      button {
+        color: white;
+        background: none;
+        border: none;
+        font: inherit;
+      }
+
+      button:active {
+        color: #e9c46a;
+      }
+    }
+  }
 }
