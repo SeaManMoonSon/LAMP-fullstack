@@ -7,7 +7,7 @@ body {
   padding: 50px;
 
   #dashboard {
-    background-color: #272727;
+    background-color: $base-color-primary;
     border-radius: 40px;
     height: 100%;
     width: 1400px;
@@ -20,12 +20,12 @@ body {
       grid-template-rows: 1fr 7fr;
 
       .logo {
-        background-color: #E9C46A;
+        background-color: $primary-color;
         border-radius: 2rem 0;
         width: 70px;
         height: 70px;
         margin: 30px 0 0 30px;
-        color: white;
+        color: $--white;
       }
 
       .menu {
@@ -44,8 +44,8 @@ body {
         margin: 20px;
 
         .statPanel {
-          box-shadow: inset 0 3px 8px #000;
-          background-color: #222823;
+          box-shadow: inset 0 3px 8px $--black;
+          background-color: $base-color-secondary;
           border-radius: 40px;
           margin: 20px;
         }
@@ -55,8 +55,8 @@ body {
         display: grid;
 
         .activity {
-          box-shadow: inset 0 3px 8px #000;
-          background-color: #222823;
+          box-shadow: inset 0 3px 8px $--black;
+          background-color: $base-color-secondary;
           border-radius: 40px;
           margin: 0 40px 40px 40px;
         }

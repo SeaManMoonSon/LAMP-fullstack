@@ -21,7 +21,7 @@ $Parsedown = new Parsedown();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title ?></title>
+    <title>Citrus CMS - <?= $title ?></title>
     <link rel="stylesheet" href="./cms-content/styles/sass/main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
@@ -33,7 +33,7 @@ $Parsedown = new Parsedown();
         <div class="pages">
             <div class="header">
                 <h2><?= $title ?></h2>
-                <a href="create.php">Add new page</a>
+                <a href="create.php" class="btn-primary">Add new page</a>
             </div>
             <?php
             $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
@@ -55,15 +55,15 @@ $Parsedown = new Parsedown();
                 $username = $user_row['username'];
 
                 echo "<li class='page'>" .
-                    "<p class='title'>" . "Title: " . $title . "</p>" .
-                    "<p class='createdBy'>" . "By: " . $username . "</p>" .
-                    "<p class='createdAt'>" . "At: " . date('m/d - H:i', strtotime($created_at)) . "</p>" .
-                    "<p class='pageID'>" . "Page ID: " . $id . "</p>" .
-                    "<div class='btnDiv'>" .
-                    "<a href='page.php?id=$id'><span class='material-symbols-rounded visit'>arrow_forward</span></a>" .
-                    "<a href='edit.php?id=$id'><span class='material-symbols-rounded edit'>edit_square</span></a>" .
-                    "<a href='delete.php?id=$id'><span class='material-symbols-rounded delete'>delete</span></a>" .
-                    "</div>" .
+                        "<p class='title'>" . "Title: " . $title . "</p>" .
+                        "<p class='createdBy'>" . "By: " . $username . "</p>" .
+                        "<p class='createdAt'>" . "At: " . date('m/d - H:i', strtotime($created_at)) . "</p>" .
+                        "<p class='pageID'>" . "Page ID: " . $id . "</p>" .
+                        "<div class='btnDiv'>" .
+                            "<a href='page.php?id=$id'><span class='material-symbols-rounded visit'>arrow_forward</span></a>" .
+                            "<a href='edit.php?id=$id'><span class='material-symbols-rounded edit'>edit_square</span></a>" .
+                            "<a href='delete.php?id=$id'><span class='material-symbols-rounded delete'>delete</span></a>" .
+                        "</div>" .
                     "</li>";
             }
             echo "</ul>";

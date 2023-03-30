@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   background-color: #264653;
-  box-shadow: inset 0 3px 8px #000;
+  box-shadow: inset 0 3px 8px black;
   border-radius: 0 30px 30px 0;
   height: 40%;
   margin-right: 20px;
@@ -37,14 +37,14 @@
 }
 
 .adminPanel {
-  box-shadow: inset 0 3px 8px #000;
+  box-shadow: inset 0 3px 8px black;
   background-color: #222823;
   border-radius: 40px;
   margin: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #e9c46a;
+  color: #E9C46A;
 }
 .adminPanel .adminDiv {
   display: flex;
@@ -54,15 +54,28 @@
   top: 50px;
 }
 .adminPanel .adminDiv .formDiv {
-  background-color: #e9c46a;
+  background-color: #E9C46A;
   color: #222823;
   text-align: center;
   display: flex;
   flex-direction: column;
-  border-radius: 40px;
 }
 .adminPanel .adminDiv .formDiv #settingsForm {
   margin: 40px;
+}
+.adminPanel .adminDiv .formDiv #settingsForm input[type=text],
+.adminPanel .adminDiv .formDiv #settingsForm input[type=text]:focus {
+  border: none;
+  border-radius: 40px;
+  height: 30px;
+  font-size: medium;
+  margin-bottom: 20px;
+  text-align: center;
+  text-justify: center;
+}
+.adminPanel .adminDiv .formDiv #settingsForm fieldset {
+  border: 3px solid #E76F51;
+  padding: 10px;
 }
 .adminPanel .adminDiv img {
   width: 100px;
@@ -74,25 +87,45 @@
   display: flex;
   flex-direction: column;
   margin-top: 30px;
+  align-items: start;
+  color: white;
 }
-.adminPanel .adminDiv .adminButtons a,
-.adminPanel .adminDiv .adminButtons a:visited {
-  margin: 10px;
+.adminPanel .adminDiv .adminButtons .logoutWrapper,
+.adminPanel .adminDiv .adminButtons .settingsWrapper {
+  display: flex;
+  padding: 5px;
+}
+.adminPanel .adminDiv .adminButtons .logoutWrapper a,
+.adminPanel .adminDiv .adminButtons .logoutWrapper a:visited,
+.adminPanel .adminDiv .adminButtons .settingsWrapper a,
+.adminPanel .adminDiv .adminButtons .settingsWrapper a:visited {
   color: white;
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
-.adminPanel .adminDiv .adminButtons a:hover,
-.adminPanel .adminDiv .adminButtons button:hover {
+.adminPanel .adminDiv .adminButtons .logoutWrapper a:hover,
+.adminPanel .adminDiv .adminButtons .logoutWrapper button:hover,
+.adminPanel .adminDiv .adminButtons .settingsWrapper a:hover,
+.adminPanel .adminDiv .adminButtons .settingsWrapper button:hover {
   text-decoration: underline;
 }
-.adminPanel .adminDiv .adminButtons button {
+.adminPanel .adminDiv .adminButtons .logoutWrapper span,
+.adminPanel .adminDiv .adminButtons .settingsWrapper span {
+  margin-right: 10px;
+}
+.adminPanel .adminDiv .adminButtons .logoutWrapper button,
+.adminPanel .adminDiv .adminButtons .settingsWrapper button {
   color: white;
   background: none;
   border: none;
   font: inherit;
+  display: flex;
+  align-items: center;
 }
-.adminPanel .adminDiv .adminButtons button:active {
-  color: #e9c46a;
+.adminPanel .adminDiv .adminButtons .logoutWrapper button:active,
+.adminPanel .adminDiv .adminButtons .settingsWrapper button:active {
+  color: #E9C46A;
 }
 
 body {
@@ -138,7 +171,7 @@ body #dashboard #innerWrapper #topDiv {
   margin: 20px;
 }
 body #dashboard #innerWrapper #topDiv .statPanel {
-  box-shadow: inset 0 3px 8px #000;
+  box-shadow: inset 0 3px 8px black;
   background-color: #222823;
   border-radius: 40px;
   margin: 20px;
@@ -147,7 +180,7 @@ body #dashboard #innerWrapper #botDiv {
   display: grid;
 }
 body #dashboard #innerWrapper #botDiv .activity {
-  box-shadow: inset 0 3px 8px #000;
+  box-shadow: inset 0 3px 8px black;
   background-color: #222823;
   border-radius: 40px;
   margin: 0 40px 40px 40px;
@@ -158,7 +191,6 @@ body #dashboard #innerWrapper #botDiv .activity {
   border-radius: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   color: white;
 }
@@ -171,6 +203,8 @@ body #dashboard #innerWrapper #botDiv .activity {
 }
 .users .userList {
   width: 100%;
+  max-height: 80%;
+  overflow-y: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -194,22 +228,14 @@ body #dashboard #innerWrapper #botDiv .activity {
 .pages .header a,
 .pages .header a:visited {
   font-size: 19px;
-  color: white;
   text-decoration: none;
-  padding: 10px;
-  border: 2px solid #E9C46A;
-  border-radius: 100rem;
-}
-.pages .header a:hover {
-  background-color: #E9C46A;
-  color: #272727;
 }
 .pages .pageList {
   max-height: 80%;
   overflow-y: auto;
 }
 .pages .pageList .page {
-  box-shadow: inset 0 3px 8px #000;
+  box-shadow: inset 0 3px 8px black;
   background-color: #222823;
   border-radius: 40px;
   padding: 10px 20px 10px 20px;
@@ -237,6 +263,32 @@ body #dashboard #innerWrapper #botDiv .activity {
 }
 .pages .pageList .page .btnDiv .delete:hover {
   color: #E76F51;
+}
+
+.btn-primary {
+  background-color: #272727;
+  border: 2px solid #E9C46A;
+  color: white;
+  border-radius: 100rem;
+  padding: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #E9C46A;
+  color: #272727;
+}
+
+.btn-secondary {
+  background-color: #E9C46A;
+  border: 2px solid #222823;
+  color: #222823;
+  border-radius: 100rem;
+  padding: 10px;
+}
+
+.btn-secondary:hover {
+  background-color: #222823;
+  color: #E9C46A;
 }
 
 .user {

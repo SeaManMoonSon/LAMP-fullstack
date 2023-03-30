@@ -4,7 +4,7 @@ require_once "./cms-includes/models/Database.php";
 require_once "./cms-includes/models/User.php";
 require_once "./cms-includes/models/Page.php";
 
-// $user_setup = new User();
+$title = "Citrus CMS - Login";
 $page_setup = new Page();
 
 // Handle form submission
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css">
-    <title>My CMS</title>
+    <title><?= $title ?></title>
 </head>
 
 <body>

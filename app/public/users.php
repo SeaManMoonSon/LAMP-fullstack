@@ -18,7 +18,7 @@ $title = "Users";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title ?></title>
+    <title>Citrus CMS - <?= $title ?></title>
     <link rel="stylesheet" href="./cms-content/styles/sass/main.css">
 </head>
 
@@ -27,16 +27,16 @@ $title = "Users";
         <?php include ROOT . '/cms-includes/partials/sidebar.php' ?>
         <div id="innerWrapper">
             <div class="users">
-            <div class="header">
-                <h2><?= $title ?></h2>
-            </div>
-                <?php 
-                $pdo = new PDO("mysql:host=". DB_HOST .";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
+                <div class="header">
+                    <h2><?= $title ?></h2>
+                </div>
+                <?php
+                $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
                 $query = "SELECT * FROM users";
                 $result = $pdo->query($query);
 
                 echo "<ul class='userList'>";
-                        include ROOT . '/cms-includes/partials/user-list.php';
+                include ROOT . '/cms-includes/partials/user-list.php';
                 echo "</ul>";
                 ?>
             </div>
