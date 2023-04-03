@@ -320,6 +320,33 @@ footer {
   padding: 20px;
 }
 
+.createForm {
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.createForm form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.createForm form input[type=submit] {
+  width: 250px;
+  margin: 20px;
+}
+.createForm form input[type=text] {
+  width: 700px;
+  height: 50px;
+  text-align: center;
+}
+.createForm form textarea {
+  width: 700px;
+  margin: 20px;
+  padding: 20px;
+}
+
 .btn-primary {
   background-color: #272727;
   border: 2px solid #E9C46A;

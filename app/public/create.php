@@ -37,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
     <link rel="stylesheet" href="./cms-content/styles/sass/main.css">
-    <script src="./cms-content/functions.js"></script>
 </head>
 
 <body>
@@ -46,11 +45,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php include ROOT . '/cms-includes/partials/sidebar.php' ?>
             <div id="innerWrapper">
                 <div class="pages">
-                    <form action="" method="POST">
-                        <input type="text" name="title" id="title" placeholder="Page title" required>
-                        <textarea name="content" id="" cols="30" rows="10" placeholder="Page content" required></textarea>
-                        <input type="submit" value="Create page">
-                    </form>
+                <div class="header">
+                    <h2><?= $title ?></h2>
+                </div>
+                    <div class="createForm">
+                        <form action="" method="POST">
+                            <input type="text" name="title" id="title" placeholder="Page title" required>
+                            <textarea name="content" id="content" cols="70" rows="20" placeholder="Page content" required></textarea>
+                            <input type="submit" value="Create page" class="btn-primary">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
