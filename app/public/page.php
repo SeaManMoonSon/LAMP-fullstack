@@ -1,40 +1,54 @@
-<?php 
-    session_start(); 
+<?php
+session_start();
 
-    require_once "./cms-includes/models/Database.php";
-    require_once "./cms-includes/models/Parsedown.php";
+require_once "./cms-includes/models/Database.php";
+require_once "./cms-includes/models/Parsedown.php";
 
-    $id = $_GET['id'];
+$id = $_GET['id'];
 
-    $pdo = new PDO("mysql:host=". DB_HOST .";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
-    $query = "SELECT * FROM pages WHERE id = :id";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-    $page = $stmt->fetch(PDO::FETCH_ASSOC);
+$pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
+$query = "SELECT * FROM pages WHERE id = :id";
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':id', $id);
+$stmt->execute();
+$page = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $title = $page['title'];
+$title = $page['title'];
+
+if (!isset($id)) {
+    header("location: index.php");
+}
+
+$Parsedown = new Parsedown();
+$page_title = $Parsedown->text($page['title']);
+$page_content = $Parsedown->text($page['content']);
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"> 
+    <link rel="stylesheet" href="./cms-content/styles/sass/main.css">
     <title><?= $title ?></title>
 </head>
+
 <body>
-    <?php 
-        require_once "./cms-includes/partials/header.php";
-
-        $Parsedown = new Parsedown();
-        $html = $Parsedown->text($page['title'] . $page['content']);
-
-        echo $html;
-
-        require_once "./cms-includes/partials/footer.php";
-    ?>
+    <header>
+        <?php include_once "./cms-includes/partials/header.php"; ?>
+    </header>
+    <main>
+        <div class="dynamicPage">
+            <h1><?= $page_title ?></h1>
+            <div><?= $page_content ?></div>
+        </div>
+    </main>
+    <footer>
+        <?php include_once "./cms-includes/partials/footer.php"; ?>
+    </footer>
 </body>
+
 </html>

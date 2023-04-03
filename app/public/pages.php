@@ -27,49 +27,52 @@ $Parsedown = new Parsedown();
 </head>
 
 <body>
+    <div class="outerWrapper">
+        <div id="dashboard">
+            <?php include ROOT . '/cms-includes/partials/sidebar.php'; ?>
+            <div class="pages">
+                <div class="header">
+                    <h2><?= $title ?></h2>
+                    <a href="create.php" class="btn-primary">Add new page</a>
+                </div>
+                <?php
+                $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
+                $query = "SELECT * FROM pages";
+                $result = $pdo->query($query);
 
-    <div id="dashboard">
-        <?php include ROOT . '/cms-includes/partials/sidebar.php' ?>
-        <div class="pages">
-            <div class="header">
-                <h2><?= $title ?></h2>
-                <a href="create.php" class="btn-primary">Add new page</a>
-            </div>
-            <?php
-            $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
-            $query = "SELECT * FROM pages";
-            $result = $pdo->query($query);
+                echo "<ul class='pageList'>";
 
-            echo "<ul class='pageList'>";
+                while ($row = $result->fetch()) {
+                    $id = $row['id'];
+                    $title = trim($row['title']);
+                    $content = trim($row['content']);
+                    $created_at = $row['created_at'];
+                    $created_by = $row['user_id'];
 
-            while ($row = $result->fetch()) {
-                $id = $row['id'];
-                $title = trim($row['title']);
-                $content = trim($row['content']);
-                $created_at = $row['created_at'];
-                $created_by = $row['user_id'];
+                    $user_query = "SELECT username FROM users WHERE id = $created_by";
+                    $user_result = $pdo->query($user_query);
+                    $user_row = $user_result->fetch();
+                    $username = $user_row['username'];
 
-                $user_query = "SELECT username FROM users WHERE id = $created_by";
-                $user_result = $pdo->query($user_query);
-                $user_row = $user_result->fetch();
-                $username = $user_row['username'];
-
-                echo "<li class='page'>" .
+                    echo "<li class='page'>" .
                         "<p class='title'>" . "Title: " . $title . "</p>" .
                         "<p class='createdBy'>" . "By: " . $username . "</p>" .
                         "<p class='createdAt'>" . "At: " . date('m/d - H:i', strtotime($created_at)) . "</p>" .
                         "<p class='pageID'>" . "Page ID: " . $id . "</p>" .
                         "<div class='btnDiv'>" .
-                            "<a href='page.php?id=$id'><span class='material-symbols-rounded visit'>arrow_forward</span></a>" .
-                            "<a href='edit.php?id=$id'><span class='material-symbols-rounded edit'>edit_square</span></a>" .
-                            "<a href='delete.php?id=$id'><span class='material-symbols-rounded delete'>delete</span></a>" .
+                        "<a href='page.php?id=$id'><span class='material-symbols-rounded visit'>arrow_forward</span></a>" .
+                        "<a href='edit.php?id=$id'><span class='material-symbols-rounded edit'>edit_square</span></a>" .
+                        "<a href='delete.php?id=$id'><span class='material-symbols-rounded delete'>delete</span></a>" .
                         "</div>" .
-                    "</li>";
-            }
-            echo "</ul>";
-            ?>
+                        "</li>";
+                }
+                echo "</ul>";
+                ?>
+            </div>
         </div>
     </div>
+
+
 </body>
 
 </html>

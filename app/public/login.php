@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute([$latest_login, $user['id']]);
 
     // Redirect to dashboard
-    header("location: index.php");
+    header("location: dashboard.php");
 }
 ?>
 <html lang="en">

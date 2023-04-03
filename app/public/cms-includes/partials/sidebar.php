@@ -4,7 +4,7 @@
             <div class="navbar">
                 <div id="leftNav">
                     <ul class="navMenu">
-                        <li><a href="index.php">Dashboard</a></li>
+                        <li><a href="dashboard.php">Dashboard</a></li>
                         <li><a href="pages.php">Pages</a></li>
                         <li><a href="users.php">Users</a></li>
                     </ul>

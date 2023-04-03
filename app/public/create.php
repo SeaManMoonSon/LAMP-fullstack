@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $form_content = $_POST['content'];
 
     if (!empty($form_title || $form_content)) {
-        $pdo = new PDO("mysql:host=". DB_HOST .";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
+        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
 
         $query = "INSERT INTO pages (id, title, content, user_id) VALUES (NULL, '$form_title', '$form_content', $user_id)";
         $stmt = $pdo->query($query);
@@ -42,16 +42,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <div id="dashboard">
-        <?php include ROOT . '/cms-includes/partials/sidebar.php' ?>
-        <div id="innerWrapper">
-            <div class="pages">
-                <form action="" method="POST">
-                    <input type="text" name="title" id="title" placeholder="Page title" required>
-                    <textarea name="content" id="" cols="30" rows="10" placeholder="Page content" required></textarea>
-
-                    <input type="submit" value="Create page">
-                </form>
+    <div class="outerWrapper">
+        <div id="dashboard">
+            <?php include ROOT . '/cms-includes/partials/sidebar.php' ?>
+            <div id="innerWrapper">
+                <div class="pages">
+                    <form action="" method="POST">
+                        <input type="text" name="title" id="title" placeholder="Page title" required>
+                        <textarea name="content" id="" cols="30" rows="10" placeholder="Page content" required></textarea>
+                        <input type="submit" value="Create page">
+                    </form>
+                </div>
             </div>
         </div>
     </div>

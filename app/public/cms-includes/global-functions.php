@@ -36,6 +36,7 @@ function odd(int $x)
     return $x % 2 !== 0;
 }
 
+
 function check_logged_in()
 {
     session_start();

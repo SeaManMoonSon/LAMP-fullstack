@@ -23,25 +23,28 @@ $title = "Users";
 </head>
 
 <body>
-    <div id="dashboard">
-        <?php include ROOT . '/cms-includes/partials/sidebar.php' ?>
-        <div id="innerWrapper">
-            <div class="users">
-                <div class="header">
-                    <h2><?= $title ?></h2>
-                </div>
-                <?php
-                $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
-                $query = "SELECT * FROM users";
-                $result = $pdo->query($query);
+    <div class="outerWrapper">
+        <div id="dashboard">
+            <?php include ROOT . '/cms-includes/partials/sidebar.php' ?>
+            <div id="innerWrapper">
+                <div class="users">
+                    <div class="header">
+                        <h2><?= $title ?></h2>
+                    </div>
+                    <?php
+                    $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
+                    $query = "SELECT * FROM users";
+                    $result = $pdo->query($query);
 
-                echo "<ul class='userList'>";
-                include ROOT . '/cms-includes/partials/user-list.php';
-                echo "</ul>";
-                ?>
+                    echo "<ul class='userList'>";
+                    include ROOT . '/cms-includes/partials/user-list.php';
+                    echo "</ul>";
+                    ?>
+                </div>
             </div>
         </div>
     </div>
+
 </body>
 
 </html>

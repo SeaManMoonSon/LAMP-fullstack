@@ -128,7 +128,39 @@
   color: #E9C46A;
 }
 
-body {
+header {
+  background-color: #272727;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+header a,
+header a:visited {
+  color: white;
+  text-decoration: none;
+  padding: 0 20px 0 20px;
+  font-size: 18px;
+}
+header a:hover {
+  color: #E9C46A;
+}
+
+footer {
+  background-color: #272727;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.outerWrapper {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -136,7 +168,7 @@ body {
   height: 100vh;
   padding: 50px;
 }
-body #dashboard {
+.outerWrapper #dashboard {
   background-color: #272727;
   border-radius: 40px;
   height: 100%;
@@ -145,11 +177,11 @@ body #dashboard {
   grid-template-columns: 1fr 6fr;
   overflow: hidden;
 }
-body #dashboard #sideMenu {
+.outerWrapper #dashboard #sideMenu {
   display: grid;
   grid-template-rows: 1fr 7fr;
 }
-body #dashboard #sideMenu .logo {
+.outerWrapper #dashboard #sideMenu .logo {
   background-color: #E9C46A;
   border-radius: 2rem 0;
   width: 70px;
@@ -157,29 +189,29 @@ body #dashboard #sideMenu .logo {
   margin: 30px 0 0 30px;
   color: white;
 }
-body #dashboard #sideMenu .menu {
+.outerWrapper #dashboard #sideMenu .menu {
   display: grid;
   align-items: center;
 }
-body #dashboard #innerWrapper {
+.outerWrapper #dashboard #innerWrapper {
   display: grid;
   width: 100%;
 }
-body #dashboard #innerWrapper #topDiv {
+.outerWrapper #dashboard #innerWrapper #topDiv {
   display: grid;
   grid-template-columns: 1fr 2fr;
   margin: 20px;
 }
-body #dashboard #innerWrapper #topDiv .statPanel {
+.outerWrapper #dashboard #innerWrapper #topDiv .statPanel {
   box-shadow: inset 0 3px 8px black;
   background-color: #222823;
   border-radius: 40px;
   margin: 20px;
 }
-body #dashboard #innerWrapper #botDiv {
+.outerWrapper #dashboard #innerWrapper #botDiv {
   display: grid;
 }
-body #dashboard #innerWrapper #botDiv .activity {
+.outerWrapper #dashboard #innerWrapper #botDiv .activity {
   box-shadow: inset 0 3px 8px black;
   background-color: #222823;
   border-radius: 40px;
@@ -263,6 +295,29 @@ body #dashboard #innerWrapper #botDiv .activity {
 }
 .pages .pageList .page .btnDiv .delete:hover {
   color: #E76F51;
+}
+
+.dynamicPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.dynamicPage h1 {
+  padding: 20px;
+  width: 80%;
+  display: flex;
+  color: #E9C46A;
+}
+.dynamicPage div {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  border: 5px solid #E9C46A;
+  background-color: #222823;
+  color: white;
+  height: 400px;
+  padding: 20px;
 }
 
 .btn-primary {

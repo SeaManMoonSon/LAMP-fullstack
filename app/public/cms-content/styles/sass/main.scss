@@ -5,12 +5,15 @@
 
 @import "layout/nav";
 @import "layout/admin";
+@import "layout/header";
+@import "layout/footer";
 
 @import "pages/register";
 @import "pages/login";
 @import "pages/dashboard";
 @import "pages/users";
 @import "pages/pages";
+@import "pages/page";
 
 @import "components/buttons";
 @import "components/user-card";
