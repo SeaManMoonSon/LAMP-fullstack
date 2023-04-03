@@ -1,7 +1,9 @@
 <?php
-session_start();
 require_once "./cms-includes/models/Database.php";
+include_once ROOT . '/cms-includes/global-functions.php';
 // require_once "./cms-includes/models/Activity.php";
+
+check_logged_in();
 
 $id = $_GET['id'];
 

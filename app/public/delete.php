@@ -1,6 +1,8 @@
 <?php
-session_start();
 require_once "./cms-includes/models/Database.php";
+include_once ROOT . '/cms-includes/global-functions.php';
+
+check_logged_in();
 
 $id = $_GET['id'];
 
