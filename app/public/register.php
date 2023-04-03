@@ -24,7 +24,10 @@
             exit();
         } else {
             $hashed_password = password_hash($form_password, PASSWORD_DEFAULT);
-            $pdo->query("INSERT INTO users (username, password) VALUES ('$form_username', '$hashed_password')");
+            $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+            $stmt->bindParam(':username', $form_username);
+            $stmt->bindParam(':password', $hashed_password);
+            $stmt->execute();
 
             $_SESSION['message'] = "Successfully created user! Please login";
             header("location: login.php");

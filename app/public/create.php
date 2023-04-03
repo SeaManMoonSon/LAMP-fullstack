@@ -19,8 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($form_title || $form_content)) {
         $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
 
-        $query = "INSERT INTO pages (id, title, content, user_id) VALUES (NULL, '$form_title', '$form_content', $user_id)";
-        $stmt = $pdo->query($query);
+        $stmt = $pdo->prepare("INSERT INTO pages (id, title, content, user_id) VALUES (NULL, ':title', ':content', :id)");
+        $stmt->bindParam(':title', $form_title);
+        $stmt->bindParam(':content', $form_content);
+        $stmt->bindParam(':id', $user_id);
+        $stmt->execute();
 
         $_SESSION['message'] = "New page added, go check it out!";
         header("location: pages.php");
