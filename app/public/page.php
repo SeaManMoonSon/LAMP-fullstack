@@ -42,8 +42,8 @@ $page_content = $Parsedown->text($page['content']);
     </header>
     <main>
         <div class="dynamicPage">
-            <h1><?= $page_title ?></h1>
-            <div><?= $page_content ?></div>
+            <?= $page_title ?>
+            <?= $page_content ?>
         </div>
     </main>
     <footer>
